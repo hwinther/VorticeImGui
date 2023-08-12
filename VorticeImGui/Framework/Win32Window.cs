@@ -3,8 +3,10 @@
 
 using System;
 using System.Diagnostics;
+using Vortice;
 using Vortice.Mathematics;
 using Vortice.Win32;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static Vortice.Win32.User32;
 
 namespace VorticeImGui
@@ -31,11 +33,11 @@ namespace VorticeImGui
             var style = WindowStyles.WS_OVERLAPPEDWINDOW;
             var styleEx = WindowExStyles.WS_EX_APPWINDOW | WindowExStyles.WS_EX_WINDOWEDGE;
 
-            var windowRect = new Rect(0, 0, Width, Height);
+            var windowRect = new RawRect(0, 0, Width, Height);
             AdjustWindowRectEx(ref windowRect, style, false, styleEx);
 
-            var windowWidth = windowRect.Right - windowRect.Left;
-            var windowHeight = windowRect.Bottom - windowRect.Top;
+            var windowWidth = Convert.ToInt32(windowRect.Right - windowRect.Left);
+            var windowHeight = Convert.ToInt32(windowRect.Bottom - windowRect.Top);
 
             var hwnd = CreateWindowEx(
                 (int)styleEx, wndClass, Title, (int)style,

@@ -100,11 +100,11 @@ namespace VorticeImGui
                 {
                     BufferCount = 1,
                     BufferDescription = new ModeDescription(Win32Window.Width, Win32Window.Height, format),
-                    IsWindowed = true,
+                    Windowed = true,
                     OutputWindow = Win32Window.Handle,
                     SampleDescription = new SampleDescription(1, 0),
                     SwapEffect = SwapEffect.Discard,
-                    Usage = Vortice.DXGI.Usage.RenderTargetOutput
+                    BufferUsage = Vortice.DXGI.Usage.RenderTargetOutput
                 };
 
                 swapChain = dxgiFactory.CreateSwapChain(device, swapchainDesc);
